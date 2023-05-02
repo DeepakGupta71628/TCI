@@ -2,8 +2,12 @@ package com.tci.bonusApp.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.tci.bonusApp.utility.DateHandler;
+
+
 
 public class Bonus {
 	
@@ -11,10 +15,12 @@ public class Bonus {
 	public String department;
 	public Integer amount;
 	public String currency;
-//	@JsonDeserialize(using = DateHandler.class)
-	public String joiningDate;
-//	@JsonDeserialize(using = DateHandler.class)
-	public String exitDate;
+	@JsonDeserialize(using = DateHandler.class)
+//	@DateTimeFormat(pattern = "mmm-dd-yyyy")
+	public Date joiningDate;
+	@JsonDeserialize(using = DateHandler.class)
+//	@DateTimeFormat(pattern = "mmm-dd-yyyy")
+	public Date exitDate;
 	
 	public String getEmpName() {
 		return empName;
@@ -40,23 +46,23 @@ public class Bonus {
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	public String getJoiningDate() {
+	public Date getJoiningDate() {
 		return joiningDate;
 	}
-	public void setJoiningDate(String joiningDate) {
+	public void setJoiningDate(Date joiningDate) {
 		this.joiningDate = joiningDate;
 	}
-	public String getExitDate() {
+	public Date getExitDate() {
 		return exitDate;
 	}
-	public void setExitDate(String exitDate) {
+	public void setExitDate(Date exitDate) {
 		this.exitDate = exitDate;
 	}
 	public Bonus() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Bonus(String empName, String department, Integer amount, String currency, String joiningDate, String exitDate) {
+	public Bonus(String empName, String department, Integer amount, String currency, Date joiningDate, Date exitDate) {
 		super();
 		this.empName = empName;
 		this.department = department;

@@ -1,5 +1,6 @@
 package com.tci.bonusApp.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tci.bonusApp.dto.Bonus;
 import com.tci.bonusApp.dto.Employee;
-import com.tci.bonusApp.exception.tciException;
+import com.tci.bonusApp.exception.TciException;
 import com.tci.bonusApp.service.BonusCalculator;
 
 @RestController
@@ -27,8 +28,9 @@ public class TciRestController {
 	private BonusCalculator bonusCalculator;
 	
 	@GetMapping("/bonus/eligibility")
-	public ResponseEntity<Map<String, List<Employee>> > caluclateBonus (@RequestBody List<Bonus> bonus) throws tciException {
+	public ResponseEntity<Map<String, List<Employee>> > calculateBonus (@RequestBody ArrayList<Bonus> bonus) throws TciException {
 		
+
 		Map<String, List<Employee>> bonusEmp=bonusCalculator.calculate(bonus);
 		
 		return new ResponseEntity<>(bonusEmp, HttpStatus.OK);

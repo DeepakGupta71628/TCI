@@ -1,6 +1,6 @@
 package com.tci.bonusApp.dto;
 
-public class Employee {
+public class Employee implements Comparable<Employee>{
 	public String empName;
 	public Integer amount;
 	
@@ -25,10 +25,12 @@ public class Employee {
 		this.empName = empName;
 		this.amount = amount;
 	}
-	
+	@Override
 	public int compareTo(Employee o) {
+		// TODO Auto-generated method stub
 		return this.empName.compareTo(o.empName);
 	}
+	
 
 	
 }

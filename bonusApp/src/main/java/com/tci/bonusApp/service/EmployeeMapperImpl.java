@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tci.bonusApp.dto.Bonus;
 import com.tci.bonusApp.dto.Employee;
-import com.tci.bonusApp.exception.tciException;
+import com.tci.bonusApp.exception.TciException;
 
 
 @Service
@@ -22,7 +22,7 @@ public class EmployeeMapperImpl implements EmployeeMapper{
 
 
 	@Override
-	public Map<String, List<Employee>> map(List<Bonus> bonuses) throws tciException {
+	public Map<String, List<Employee>> map(List<Bonus> bonuses) throws TciException {
 		// TODO Auto-generated method stub
 		HashMap<String, List<Employee>> map=new HashMap<>();
 		
@@ -38,13 +38,13 @@ public class EmployeeMapperImpl implements EmployeeMapper{
 			}
 		}
 		
-//		for (Entry<String, List<Employee>> it: map.entrySet())
-//        {
-//			
-//
-//			List<Employee> list= map.get(it.getKey());
-//			Collections.sort(list);
-//        }
+		for ( String key:map.keySet())
+        {
+
+			List<Employee> list= map.get(key);
+			Collections.sort(list);
+        }
+		
 		return map;
 	}
 

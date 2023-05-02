@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tci.bonusApp.dto.Bonus;
 import com.tci.bonusApp.dto.Employee;
-import com.tci.bonusApp.exception.tciException;
+import com.tci.bonusApp.exception.TciException;
 
 @Service
 @Transactional
@@ -21,13 +21,13 @@ public class BonusCalculatorImpl implements BonusCalculator {
 	private EmployeeMapper employeeMapper;
 
 	@Override
-	public Map<String, List<Employee>> calculate(List<Bonus> bonuses) throws tciException {
+	public Map<String, List<Employee>> calculate(List<Bonus> bonuses) throws TciException {
 		// TODO Auto-generated method stub
 		
 		Date ctrDate =new Date();
-	//	List<Bonus> filtered=bonuses.stream().filter(b->b.joiningDate.before(ctrDate)).filter(b->b.exitDate.after(ctrDate)).collect(Collectors.toList());
-		List<Bonus> filtered=bonuses.stream().collect(Collectors.toList());
-	
+		List<Bonus> filtered=bonuses.stream().filter(b->b.joiningDate.before(ctrDate)).filter(b->b.exitDate.after(ctrDate)).collect(Collectors.toList());
+		//List<Bonus> filtered=bonuses.stream().collect(Collectors.toList());
+		System.out.println(filtered);
 		Map<String, List<Employee>> mapToEmployee = employeeMapper.map(filtered);
 		
 		return mapToEmployee;
