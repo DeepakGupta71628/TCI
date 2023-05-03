@@ -30,10 +30,12 @@ public class TciRestController {
 	@GetMapping("/bonus/eligibility")
 	public ResponseEntity<Map<String, List<EmployeeDTO>> > calculateBonus (@RequestBody ArrayList<BonusDTO> bonus) throws TciException {
 		
-
-		Map<String, List<EmployeeDTO>> bonusEmp=bonusCalculator.calculate(bonus);
 		
-		return new ResponseEntity<>(bonusEmp, HttpStatus.OK);
+			Map<String, List<EmployeeDTO>> bonusEmp=bonusCalculator.calculate(bonus);
+			
+			return new ResponseEntity<>(bonusEmp, HttpStatus.OK);
+		
+		
 	}
 		
 }
