@@ -10,8 +10,8 @@ import java.util.Map.Entry;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tci.bonusApp.dto.Bonus;
-import com.tci.bonusApp.dto.Employee;
+import com.tci.bonusApp.dto.BonusDTO;
+import com.tci.bonusApp.dto.EmployeeDTO;
 import com.tci.bonusApp.exception.TciException;
 
 
@@ -22,18 +22,18 @@ public class EmployeeMapperImpl implements EmployeeMapper{
 
 
 	@Override
-	public Map<String, List<Employee>> map(List<Bonus> bonuses) throws TciException {
+	public Map<String, List<EmployeeDTO>> map(List<BonusDTO> bonuses) throws TciException {
 		// TODO Auto-generated method stub
-		HashMap<String, List<Employee>> map=new HashMap<>();
+		HashMap<String, List<EmployeeDTO>> map=new HashMap<>();
 		
-		for(Bonus bonus:bonuses) {
+		for(BonusDTO bonus:bonuses) {
 			if(map.containsKey(bonus.getCurrency())){
-				List<Employee> list= map.get(bonus.getCurrency());
-				Employee emp=new Employee(bonus.getEmpName(),bonus.getAmount());
+				List<EmployeeDTO> list= map.get(bonus.getCurrency());
+				EmployeeDTO emp=new EmployeeDTO(bonus.getEmpName(),bonus.getAmount());
 				list.add(emp);
 			}else {
-				List<Employee> list=new ArrayList<Employee>();
-				list.add(new Employee(bonus.getEmpName(),bonus.getAmount()));
+				List<EmployeeDTO> list=new ArrayList<EmployeeDTO>();
+				list.add(new EmployeeDTO(bonus.getEmpName(),bonus.getAmount()));
 				map.put(bonus.getCurrency(), list);
 			}
 		}
@@ -41,7 +41,7 @@ public class EmployeeMapperImpl implements EmployeeMapper{
 		for ( String key:map.keySet())
         {
 
-			List<Employee> list= map.get(key);
+			List<EmployeeDTO> list= map.get(key);
 			Collections.sort(list);
         }
 		

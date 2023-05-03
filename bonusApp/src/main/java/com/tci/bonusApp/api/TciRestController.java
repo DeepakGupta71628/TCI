@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tci.bonusApp.dto.Bonus;
-import com.tci.bonusApp.dto.Employee;
+import com.tci.bonusApp.dto.BonusDTO;
+import com.tci.bonusApp.dto.EmployeeDTO;
 import com.tci.bonusApp.exception.TciException;
 import com.tci.bonusApp.service.BonusCalculator;
 
@@ -28,10 +28,10 @@ public class TciRestController {
 	private BonusCalculator bonusCalculator;
 	
 	@GetMapping("/bonus/eligibility")
-	public ResponseEntity<Map<String, List<Employee>> > calculateBonus (@RequestBody ArrayList<Bonus> bonus) throws TciException {
+	public ResponseEntity<Map<String, List<EmployeeDTO>> > calculateBonus (@RequestBody ArrayList<BonusDTO> bonus) throws TciException {
 		
 
-		Map<String, List<Employee>> bonusEmp=bonusCalculator.calculate(bonus);
+		Map<String, List<EmployeeDTO>> bonusEmp=bonusCalculator.calculate(bonus);
 		
 		return new ResponseEntity<>(bonusEmp, HttpStatus.OK);
 	}

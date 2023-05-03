@@ -9,7 +9,7 @@ import com.tci.bonusApp.utility.DateHandler;
 
 
 
-public class Bonus {
+public class BonusDTO {
 	
 	public String empName;
 	public String department;
@@ -58,11 +58,11 @@ public class Bonus {
 	public void setExitDate(Date exitDate) {
 		this.exitDate = exitDate;
 	}
-	public Bonus() {
+	public BonusDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Bonus(String empName, String department, Integer amount, String currency, Date joiningDate, Date exitDate) {
+	public BonusDTO(String empName, String department, Integer amount, String currency, Date joiningDate, Date exitDate) {
 		super();
 		this.empName = empName;
 		this.department = department;

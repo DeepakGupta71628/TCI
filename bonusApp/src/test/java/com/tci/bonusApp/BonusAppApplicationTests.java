@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
-import com.tci.bonusApp.dto.Bonus;
-import com.tci.bonusApp.dto.Employee;
+import com.tci.bonusApp.dto.BonusDTO;
+import com.tci.bonusApp.dto.EmployeeDTO;
 import com.tci.bonusApp.exception.TciException;
 import com.tci.bonusApp.service.BonusCalculator;
 import com.tci.bonusApp.service.EmployeeMapper;
@@ -30,12 +30,12 @@ class BonusAppApplicationTests {
 	
 	@Test
 	void contextLoads() throws TciException {
-		HashMap<String,List<Employee>> map=new HashMap<>();
-		map.put("INR", new ArrayList<Employee>());
+		HashMap<String,List<EmployeeDTO>> map=new HashMap<>();
+		map.put("INR", new ArrayList<EmployeeDTO>());
 		
-		List<Bonus> bonus=new ArrayList<>();
+		List<BonusDTO> bonus=new ArrayList<>();
 		
-		bonus.add(new Bonus("raj singh","accounts",5000,"INR",new Date(0),new Date(0)));
+		bonus.add(new BonusDTO("raj singh","accounts",5000,"INR",new Date(0),new Date(0)));
 
 
 		//Mocking
